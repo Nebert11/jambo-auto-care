@@ -2,6 +2,7 @@ import React from 'react';
 import { Wrench, Palette, ShoppingCart, CheckCircle, Phone, MapPin, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Link } from 'react-router-dom';
 import heroImage from '@/assets/hero-garage.jpg';
 
 const Header = () => (
@@ -12,14 +13,16 @@ const Header = () => (
         <h1 className="text-2xl font-bold">AutoCare Kenya</h1>
       </div>
       <nav className="hidden md:flex space-x-6">
-        <a href="#services" className="hover:text-accent transition-smooth">Services</a>
-        <a href="#about" className="hover:text-accent transition-smooth">About</a>
-        <a href="#parts" className="hover:text-accent transition-smooth">Parts</a>
-        <a href="#contact" className="hover:text-accent transition-smooth">Contact</a>
+        <Link to="/services" className="hover:text-accent transition-smooth">Services</Link>
+        <Link to="/#about" className="hover:text-accent transition-smooth">About</Link>
+        <Link to="/parts" className="hover:text-accent transition-smooth">Parts</Link>
+        <Link to="/contact" className="hover:text-accent transition-smooth">Contact</Link>
       </nav>
-      <Button variant="accent">
-        <Phone className="w-4 h-4 mr-2" />
-        Call Now
+      <Button variant="accent" asChild>
+        <Link to="/contact">
+          <Phone className="w-4 h-4 mr-2" />
+          Call Now
+        </Link>
       </Button>
     </div>
   </header>
@@ -42,13 +45,17 @@ const Hero = () => (
         Your trusted automotive partner in Kenya.
       </p>
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
-        <Button variant="accent" size="lg" className="text-lg px-8 py-4">
-          <CheckCircle className="w-5 h-5 mr-2" />
-          Book Service
+        <Button variant="accent" size="lg" className="text-lg px-8 py-4" asChild>
+          <Link to="/booking">
+            <CheckCircle className="w-5 h-5 mr-2" />
+            Book Service
+          </Link>
         </Button>
-        <Button variant="secondary" size="lg" className="text-lg px-8 py-4">
-          <ShoppingCart className="w-5 h-5 mr-2" />
-          Shop Parts
+        <Button variant="secondary" size="lg" className="text-lg px-8 py-4" asChild>
+          <Link to="/parts">
+            <ShoppingCart className="w-5 h-5 mr-2" />
+            Shop Parts
+          </Link>
         </Button>
       </div>
     </div>
@@ -97,7 +104,7 @@ const Services = () => {
                 <CardDescription className="text-base">{service.description}</CardDescription>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-2">
+                <ul className="space-y-2 mb-6">
                   {service.features.map((feature, idx) => (
                     <li key={idx} className="flex items-center text-muted-foreground">
                       <CheckCircle className="w-4 h-4 text-accent mr-2 flex-shrink-0" />
@@ -105,9 +112,17 @@ const Services = () => {
                     </li>
                   ))}
                 </ul>
+                <Button className="w-full" variant="accent" asChild>
+                  <Link to="/services">Learn More</Link>
+                </Button>
               </CardContent>
             </Card>
           ))}
+        </div>
+        <div className="text-center mt-12">
+          <Button variant="accent" size="lg" asChild>
+            <Link to="/services">View All Services</Link>
+          </Button>
         </div>
       </div>
     </section>
@@ -168,9 +183,11 @@ const Contact = () => (
             <p className="opacity-90">Mon-Sat: 8AM-6PM</p>
           </div>
         </div>
-        <Button variant="accent" size="lg" className="text-lg px-8 py-4">
-          <Phone className="w-5 h-5 mr-2" />
-          Schedule Appointment
+        <Button variant="accent" size="lg" className="text-lg px-8 py-4" asChild>
+          <Link to="/booking">
+            <Phone className="w-5 h-5 mr-2" />
+            Schedule Appointment
+          </Link>
         </Button>
       </div>
     </div>
