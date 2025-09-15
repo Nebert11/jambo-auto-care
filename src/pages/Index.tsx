@@ -132,7 +132,7 @@ const Services = () => {
                   ))}
                 </ul>
                 <Button className="w-full" variant="accent" asChild>
-                  <Link to={`/services#${service.id}`}>Learn More</Link>
+                  <Link to={`/services/${service.id}`}>Learn More</Link>
                 </Button>
               </CardContent>
             </Card>
