@@ -3,6 +3,9 @@ import { Wrench, Palette, ShoppingCart, CheckCircle, Phone, ArrowLeft, Clock, St
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
+import carDiagnosisImage from '@/assets/car-diagnosis.jpg';
+import windowTintingImage from '@/assets/window-tinting.jpg';
+import carMaintenanceImage from '@/assets/car-maintenance.jpg';
 
 const Header = () => (
   <header className="bg-gradient-hero text-primary-foreground py-4 px-6 shadow-automotive">
@@ -33,6 +36,7 @@ const Services = () => {
       icon: <Wrench className="w-16 h-16 text-accent" />,
       title: "Complete Car Diagnosis",
       description: "State-of-the-art computer diagnostics to identify and resolve vehicle issues with precision.",
+      image: carDiagnosisImage,
       features: [
         "Advanced OBD-II scanning",
         "Engine performance analysis",
@@ -48,6 +52,7 @@ const Services = () => {
       icon: <Palette className="w-16 h-16 text-accent" />,
       title: "Professional Window Tinting",
       description: "Premium window tinting services using high-quality films for ultimate protection and style.",
+      image: windowTintingImage,
       features: [
         "UV protection up to 99%",
         "Heat rejection technology",
@@ -63,6 +68,7 @@ const Services = () => {
       icon: <Shield className="w-16 h-16 text-accent" />,
       title: "Preventive Maintenance",
       description: "Regular maintenance services to keep your vehicle running at peak performance.",
+      image: carMaintenanceImage,
       features: [
         "Oil and filter changes",
         "Brake pad replacement",
@@ -127,17 +133,29 @@ const Services = () => {
           
           <div className="grid lg:grid-cols-3 gap-8 mb-16">
             {services.map((service, index) => (
-              <Card key={index} className="group hover:shadow-automotive transition-all duration-300 border-2 hover:border-accent/20">
-                <CardHeader className="text-center pb-4">
-                  <div className="mx-auto mb-4 p-6 bg-accent/10 rounded-full w-fit group-hover:bg-accent/20 transition-colors">
-                    {service.icon}
+              <Card key={index} className="group hover:shadow-automotive transition-all duration-300 border-2 hover:border-accent/20 overflow-hidden">
+                <div className="relative h-48 overflow-hidden">
+                  <img 
+                    src={service.image} 
+                    alt={service.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <div className="flex justify-between items-end text-white">
+                      <div className="p-3 bg-accent/20 backdrop-blur-sm rounded-full w-fit">
+                        {service.icon}
+                      </div>
+                      <div className="text-right">
+                        <div className="text-lg font-bold">{service.price}</div>
+                        <div className="text-sm opacity-90">{service.duration}</div>
+                      </div>
+                    </div>
                   </div>
+                </div>
+                <CardHeader className="pb-4">
                   <CardTitle className="text-2xl mb-2">{service.title}</CardTitle>
                   <CardDescription className="text-base mb-4">{service.description}</CardDescription>
-                  <div className="flex justify-between items-center text-sm font-semibold">
-                    <span className="text-accent">{service.price}</span>
-                    <span className="text-muted-foreground">{service.duration}</span>
-                  </div>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-3 mb-6">
