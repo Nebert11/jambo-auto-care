@@ -108,7 +108,7 @@ const Booking = () => {
             </div>
             <h2 className="text-3xl font-bold mb-4">Booking Confirmed!</h2>
             <p className="text-xl text-muted-foreground mb-8">
-              Thank you for choosing AutoCare Kenya. We'll call you within 30 minutes to confirm your appointment details.
+              Thank you for choosing Suba Touch. We'll call you within 30 minutes to confirm your appointment details.
             </p>
             <div className="bg-muted/30 rounded-lg p-6 mb-8">
               <h3 className="font-semibold mb-4">Booking Summary</h3>

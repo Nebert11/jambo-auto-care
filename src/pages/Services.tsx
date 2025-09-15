@@ -17,7 +17,7 @@ const Header = () => (
         </Link>
         <div className="flex items-center space-x-2">
           <Wrench className="h-8 w-8 text-accent" />
-          <h1 className="text-2xl font-bold">AutoCare Kenya</h1>
+          <h1 className="text-2xl font-bold">Suba Touch</h1>
         </div>
       </div>
       <Button variant="accent" asChild>
@@ -202,7 +202,7 @@ const Services = () => {
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h3 className="text-3xl font-bold mb-4">Why Choose AutoCare Kenya?</h3>
+            <h3 className="text-3xl font-bold mb-4">Why Choose Suba Touch?</h3>
           </div>
           <div className="grid md:grid-cols-4 gap-8">
             <div className="text-center">

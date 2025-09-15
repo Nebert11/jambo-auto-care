@@ -13,7 +13,7 @@ const Header = () => (
     <div className="container mx-auto flex justify-between items-center">
       <div className="flex items-center space-x-2">
         <Wrench className="h-8 w-8 text-accent" />
-        <h1 className="text-2xl font-bold">AutoCare Kenya</h1>
+        <h1 className="text-2xl font-bold">Suba Touch</h1>
       </div>
       <nav className="hidden md:flex space-x-6">
         <Link to="/services" className="hover:text-accent transition-smooth">Services</Link>
@@ -152,9 +152,9 @@ const About = () => (
   <section id="about" className="py-20 bg-muted/30">
     <div className="container mx-auto px-6">
       <div className="max-w-4xl mx-auto text-center">
-        <h3 className="text-4xl font-bold mb-6 text-foreground">About AutoCare Kenya</h3>
+        <h3 className="text-4xl font-bold mb-6 text-foreground">About Suba Touch</h3>
         <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-          Located in the heart of Kenya, AutoCare Kenya has been serving the automotive needs of our community 
+          Located in the heart of Kenya, Suba Touch has been serving the automotive needs of our community 
           for over a decade. We combine modern diagnostic technology with traditional craftsmanship to deliver 
           exceptional service for all vehicle types.
         </p>
@@ -218,10 +218,10 @@ const Footer = () => (
     <div className="container mx-auto px-6 text-center">
       <div className="flex items-center justify-center space-x-2 mb-4">
         <Wrench className="h-6 w-6 text-accent" />
-        <span className="text-xl font-bold">AutoCare Kenya</span>
+        <span className="text-xl font-bold">Suba Touch</span>
       </div>
       <p className="text-primary-foreground/70">
-        © 2024 AutoCare Kenya. All rights reserved. Your trusted automotive partner.
+        © 2024 Suba Touch. All rights reserved. Your trusted automotive partner.
       </p>
     </div>
   </footer>

@@ -17,7 +17,7 @@ const Header = () => (
         </Link>
         <div className="flex items-center space-x-2">
           <Wrench className="h-8 w-8 text-accent" />
-          <h1 className="text-2xl font-bold">AutoCare Kenya</h1>
+          <h1 className="text-2xl font-bold">Suba Touch</h1>
         </div>
       </div>
       <Button variant="accent" asChild>
