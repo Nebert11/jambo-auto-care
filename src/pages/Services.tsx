@@ -133,7 +133,11 @@ const Services = () => {
           
           <div className="grid lg:grid-cols-3 gap-8 mb-16">
             {services.map((service, index) => (
-              <Card key={index} className="group hover:shadow-automotive transition-all duration-300 border-2 hover:border-accent/20 overflow-hidden">
+              <Card 
+                key={index} 
+                id={index === 0 ? 'diagnosis' : index === 1 ? 'tinting' : 'maintenance'}
+                className="group hover:shadow-automotive transition-all duration-300 border-2 hover:border-accent/20 overflow-hidden scroll-mt-24"
+              >
                 <div className="relative h-48 overflow-hidden">
                   <img 
                     src={service.image} 

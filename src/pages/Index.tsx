@@ -4,6 +4,9 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
 import heroImage from '@/assets/hero-garage.jpg';
+import carDiagnosisImage from '@/assets/car-diagnosis.jpg';
+import windowTintingImage from '@/assets/window-tinting.jpg';
+import carMaintenanceImage from '@/assets/car-maintenance.jpg';
 
 const Header = () => (
   <header className="bg-gradient-hero text-primary-foreground py-4 px-6 shadow-automotive">
@@ -65,22 +68,28 @@ const Hero = () => (
 const Services = () => {
   const services = [
     {
+      id: "diagnosis",
       icon: <Wrench className="w-12 h-12 text-accent" />,
       title: "Full Car Diagnosis",
       description: "Advanced computer diagnostics to identify and resolve any issues with your vehicle's systems.",
+      image: carDiagnosisImage,
       features: ["Engine diagnostics", "Electronic systems", "Performance analysis", "Fault code scanning"]
     },
     {
+      id: "tinting", 
       icon: <Palette className="w-12 h-12 text-accent" />,
       title: "Professional Tinting",
       description: "High-quality window tinting services for privacy, UV protection, and enhanced vehicle aesthetics.",
+      image: windowTintingImage,
       features: ["UV protection", "Heat reduction", "Privacy enhancement", "Quality films"]
     },
     {
+      id: "maintenance",
       icon: <ShoppingCart className="w-12 h-12 text-accent" />,
-      title: "Genuine Spare Parts",
-      description: "Wide selection of authentic spare parts for all major vehicle brands at competitive prices.",
-      features: ["Genuine parts", "Competitive pricing", "Wide selection", "Quality guarantee"]
+      title: "Preventive Maintenance", 
+      description: "Regular maintenance services to keep your vehicle running at peak performance.",
+      image: carMaintenanceImage,
+      features: ["Oil changes", "Brake service", "Battery testing", "Multi-point inspection"]
     }
   ];
 
@@ -95,11 +104,21 @@ const Services = () => {
         </div>
         <div className="grid md:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <Card key={index} className="group hover:shadow-automotive transition-all duration-300 border-2 hover:border-accent/20">
-              <CardHeader className="text-center pb-4">
-                <div className="mx-auto mb-4 p-4 bg-accent/10 rounded-full w-fit group-hover:bg-accent/20 transition-colors">
-                  {service.icon}
+            <Card key={index} className="group hover:shadow-automotive transition-all duration-300 border-2 hover:border-accent/20 overflow-hidden">
+              <div className="relative h-48 overflow-hidden">
+                <img 
+                  src={service.image} 
+                  alt={service.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute bottom-4 left-4">
+                  <div className="p-3 bg-accent/20 backdrop-blur-sm rounded-full w-fit">
+                    {service.icon}
+                  </div>
                 </div>
+              </div>
+              <CardHeader className="text-center pb-4">
                 <CardTitle className="text-2xl mb-2">{service.title}</CardTitle>
                 <CardDescription className="text-base">{service.description}</CardDescription>
               </CardHeader>
@@ -113,7 +132,7 @@ const Services = () => {
                   ))}
                 </ul>
                 <Button className="w-full" variant="accent" asChild>
-                  <Link to="/services">Learn More</Link>
+                  <Link to={`/services#${service.id}`}>Learn More</Link>
                 </Button>
               </CardContent>
             </Card>
