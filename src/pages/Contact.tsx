@@ -64,13 +64,13 @@ const Contact = () => {
     {
       icon: <Mail className="w-6 h-6 text-accent" />,
       title: "Email Us",
-      details: ["info@autocarekenya.com", "parts@autocarekenya.com"],
+      details: ["info@subatouch.com", "parts@subatouch.com"],
       description: "We respond within 2 hours"
     },
     {
       icon: <MapPin className="w-6 h-6 text-accent" />,
       title: "Visit Our Workshop",
-      details: ["Mombasa Road, Industrial Area", "Nairobi, Kenya"],
+      details: ["Thika Road", "Nairobi"],
       description: "Easy parking available"
     },
     {
@@ -247,7 +247,7 @@ const Contact = () => {
                   <div className="text-center">
                     <MapPin className="w-12 h-12 text-accent mx-auto mb-2" />
                     <p className="text-muted-foreground">Interactive Map</p>
-                    <p className="text-sm text-muted-foreground">Mombasa Road, Industrial Area</p>
+                    <p className="text-sm text-muted-foreground">Thika Road, Nairobi</p>
                   </div>
                 </div>
               </CardContent>
