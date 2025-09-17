@@ -53,26 +53,26 @@ const About = () => {
     "Transmission Service"
   ];
 
-  // const team = [
-  //   {
-  //     name: "James Kiprotich",
-  //     role: "Lead Technician",
-  //     experience: "8+ Years",
-  //     specialization: "Engine Diagnostics & Repair"
-  //   },
-  //   {
-  //     name: "Mary Wanjiku", 
-  //     role: "Service Advisor",
-  //     experience: "5+ Years",
-  //     specialization: "Customer Relations & Parts"
-  //   },
-  //   {
-  //     name: "David Mwangi",
-  //     role: "Tinting Specialist", 
-  //     experience: "6+ Years",
-  //     specialization: "Window Tinting & Wrapping"
-  //   }
-  // ];
+  const team = [
+    {
+      name: "James Kiprotich",
+      role: "Lead Technician",
+      experience: "8+ Years",
+      specialization: "Engine Diagnostics & Repair"
+    },
+    {
+      name: "Mary Wanjiku", 
+      role: "Service Advisor",
+      experience: "5+ Years",
+      specialization: "Customer Relations & Parts"
+    },
+    {
+      name: "David Mwangi",
+      role: "Tinting Specialist", 
+      experience: "6+ Years",
+      specialization: "Window Tinting & Wrapping"
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-background">
