@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Phone, Mail, MapPin, Clock, ArrowLeft, Send, Star } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Send, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -7,26 +7,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Link } from 'react-router-dom';
 import { useToast } from '@/hooks/use-toast';
-
-const Header = () => (
-  <header className="bg-gradient-hero text-primary-foreground py-4 px-6 shadow-automotive">
-    <div className="container mx-auto flex justify-between items-center">
-      <div className="flex items-center space-x-4">
-        <Link to="/" className="flex items-center space-x-2 hover:text-accent transition-smooth">
-          <ArrowLeft className="h-5 w-5" />
-          <span>Back to Home</span>
-        </Link>
-        <div className="flex items-center space-x-2">
-          <Phone className="h-8 w-8 text-accent" />
-          <h1 className="text-2xl font-bold">Contact Us</h1>
-        </div>
-      </div>
-      <Button variant="accent" asChild>
-        <Link to="/booking">Book Service</Link>
-      </Button>
-    </div>
-  </header>
-);
+import Navbar from '@/components/Navbar';
 
 const Contact = () => {
   const { toast } = useToast();
@@ -83,13 +64,13 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
+      <Navbar />
       
       {/* Hero Section */}
-      <section className="bg-gradient-hero text-primary-foreground py-16">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Get In Touch</h2>
-          <p className="text-xl mb-8 opacity-90 max-w-3xl mx-auto">
+      <section className="py-20 px-4 bg-gradient-to-r from-primary/10 to-accent/10">
+        <div className="container mx-auto text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Get In Touch</h2>
+          <p className="text-xl mb-8 text-muted-foreground max-w-3xl mx-auto">
             Ready to give your car the expert care it deserves? Contact our professional team today.
           </p>
           <div className="flex items-center justify-center space-x-8 text-sm">
@@ -105,11 +86,11 @@ const Contact = () => {
         </div>
       </section>
 
-      <div className="container mx-auto px-6 py-12">
+      <div className="container mx-auto px-4 py-12">
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Form */}
           <div>
-            <Card className="shadow-automotive">
+            <Card className="border-border/50 bg-card/50 backdrop-blur">
               <CardHeader>
                 <CardTitle className="text-2xl">Send Us a Message</CardTitle>
                 <CardDescription>
@@ -189,7 +170,7 @@ const Contact = () => {
                     />
                   </div>
 
-                  <Button type="submit" variant="accent" size="lg" className="w-full">
+                  <Button type="submit" size="lg" className="w-full bg-accent hover:bg-accent/90">
                     <Send className="w-4 h-4 mr-2" />
                     Send Message
                   </Button>
@@ -204,7 +185,7 @@ const Contact = () => {
               <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
               <div className="grid gap-6">
                 {contactInfo.map((info, index) => (
-                  <Card key={index} className="border-2 hover:border-accent/20 transition-colors">
+                  <Card key={index} className="border-border/50 bg-card/50 backdrop-blur hover:border-accent/20 transition-colors">
                     <CardContent className="p-6">
                       <div className="flex items-start space-x-4">
                         <div className="bg-accent/10 rounded-full p-3">
@@ -240,10 +221,10 @@ const Contact = () => {
             </Card>
 
             {/* Location Map Placeholder */}
-            <Card>
+            <Card className="border-border/50 bg-card/50 backdrop-blur">
               <CardContent className="p-6">
                 <h4 className="font-semibold text-lg mb-4">Find Us</h4>
-                <div className="bg-muted/30 rounded-lg h-48 flex items-center justify-center">
+                <div className="bg-secondary/30 rounded-lg h-48 flex items-center justify-center">
                   <div className="text-center">
                     <MapPin className="w-12 h-12 text-accent mx-auto mb-2" />
                     <p className="text-muted-foreground">Interactive Map</p>
@@ -257,19 +238,19 @@ const Contact = () => {
       </div>
 
       {/* Call to Action */}
-      <section className="py-16 bg-gradient-hero text-primary-foreground">
-        <div className="container mx-auto px-6 text-center">
+      <section className="py-16 px-4 bg-gradient-to-r from-primary/10 to-accent/10 border-t border-border/50">
+        <div className="container mx-auto text-center">
           <h3 className="text-2xl font-bold mb-4">Ready to Book Your Service?</h3>
-          <p className="text-lg mb-6 opacity-90">
+          <p className="text-lg mb-6 text-muted-foreground">
             Schedule your appointment online or call us directly for immediate assistance.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-            <Button variant="accent" size="lg" className="flex-1" asChild>
+            <Button size="lg" className="flex-1 bg-accent hover:bg-accent/90" asChild>
               <Link to="/booking">
                 Book Online
               </Link>
             </Button>
-            <Button variant="secondary" size="lg" className="flex-1">
+            <Button variant="outline" size="lg" className="flex-1">
               <Phone className="w-4 h-4 mr-2" />
               Call Now
             </Button>
