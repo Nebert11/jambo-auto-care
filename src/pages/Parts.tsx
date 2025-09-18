@@ -1,11 +1,33 @@
 import React, { useState } from 'react';
-import { ShoppingCart, Search, Filter, Star, Shield, Truck, Phone } from 'lucide-react';
+import { ShoppingCart, Search, Filter, Star, Shield, Truck, ArrowLeft, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Link } from 'react-router-dom';
-import Navbar from '@/components/Navbar';
+
+const Header = () => (
+  <header className="bg-gradient-hero text-primary-foreground py-4 px-6 shadow-automotive">
+    <div className="container mx-auto flex justify-between items-center">
+      <div className="flex items-center space-x-4">
+        <Link to="/" className="flex items-center space-x-2 hover:text-accent transition-smooth">
+          <ArrowLeft className="h-5 w-5" />
+          <span>Back to Home</span>
+        </Link>
+        <div className="flex items-center space-x-2">
+          <ShoppingCart className="h-8 w-8 text-accent" />
+          <h1 className="text-2xl font-bold">Spare Parts</h1>
+        </div>
+      </div>
+      <Button variant="accent" asChild>
+        <Link to="/contact">
+          <Phone className="w-4 h-4 mr-2" />
+          Contact Us
+        </Link>
+      </Button>
+    </div>
+  </header>
+);
 
 const Parts = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -103,15 +125,15 @@ const Parts = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
+      <Header />
       
       {/* Hero Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-primary/10 to-accent/10">
-        <div className="container mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+      <section className="bg-gradient-hero text-primary-foreground py-16">
+        <div className="container mx-auto px-6 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Genuine Spare Parts
           </h2>
-          <p className="text-xl mb-8 text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl mb-8 opacity-90 max-w-3xl mx-auto">
             Quality automotive parts from trusted brands. Fast delivery across Kenya with warranty guarantee.
           </p>
           <div className="flex items-center justify-center space-x-8 text-sm">
@@ -132,8 +154,8 @@ const Parts = () => {
       </section>
 
       {/* Search and Filter */}
-      <section className="py-8 px-4 bg-secondary/30">
-        <div className="container mx-auto">
+      <section className="py-8 bg-muted/30">
+        <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row gap-4 items-center">
             <div className="relative flex-1 max-w-md">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
@@ -148,10 +170,9 @@ const Parts = () => {
               {categories.map((category) => (
                 <Button
                   key={category}
-                  variant={selectedCategory === category ? "default" : "outline"}
+                  variant={selectedCategory === category ? "accent" : "outline"}
                   size="sm"
                   onClick={() => setSelectedCategory(category)}
-                  className={selectedCategory === category ? "bg-accent hover:bg-accent/90" : ""}
                 >
                   {category}
                 </Button>
@@ -162,11 +183,11 @@ const Parts = () => {
       </section>
 
       {/* Parts Grid */}
-      <section className="py-12 px-4">
-        <div className="container mx-auto">
+      <section className="py-12">
+        <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredParts.map((part) => (
-              <Card key={part.id} className="group hover:shadow-lg transition-all duration-300 border-border/50 bg-card/50 backdrop-blur hover:border-accent/20">
+              <Card key={part.id} className="group hover:shadow-automotive transition-all duration-300 border-2 hover:border-accent/20">
                 <CardHeader className="pb-4">
                   <div className="flex justify-between items-start mb-2">
                     <Badge variant={part.inStock ? "default" : "destructive"}>
@@ -200,7 +221,8 @@ const Parts = () => {
                   </div>
                   <div className="flex gap-2">
                     <Button 
-                      className="flex-1 bg-accent hover:bg-accent/90" 
+                      className="flex-1" 
+                      variant="accent"
                       disabled={!part.inStock}
                       asChild={part.inStock}
                     >
@@ -230,7 +252,7 @@ const Parts = () => {
           {filteredParts.length === 0 && (
             <div className="text-center py-12">
               <p className="text-xl text-muted-foreground mb-4">No parts found matching your search.</p>
-              <Button className="bg-accent hover:bg-accent/90" onClick={() => {setSearchTerm(''); setSelectedCategory('All');}}>
+              <Button variant="accent" onClick={() => {setSearchTerm(''); setSelectedCategory('All');}}>
                 Clear Filters
               </Button>
             </div>
@@ -239,20 +261,20 @@ const Parts = () => {
       </section>
 
       {/* Call to Action */}
-      <section className="py-16 px-4 bg-gradient-to-r from-primary/10 to-accent/10 border-t border-border/50">
-        <div className="container mx-auto text-center">
+      <section className="py-16 bg-gradient-hero text-primary-foreground">
+        <div className="container mx-auto px-6 text-center">
           <h3 className="text-2xl font-bold mb-4">Can't Find What You Need?</h3>
-          <p className="text-lg mb-6 text-muted-foreground">
+          <p className="text-lg mb-6 opacity-90">
             Our parts specialists can help you find the exact component for your vehicle.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-            <Button size="lg" className="flex-1 bg-accent hover:bg-accent/90" asChild>
+            <Button variant="accent" size="lg" className="flex-1" asChild>
               <Link to="/contact">
                 <Phone className="w-4 h-4 mr-2" />
                 Call Us
               </Link>
             </Button>
-            <Button variant="outline" size="lg" className="flex-1" asChild>
+            <Button variant="secondary" size="lg" className="flex-1" asChild>
               <Link to="/contact">
                 Request Quote
               </Link>

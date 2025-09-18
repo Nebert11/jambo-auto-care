@@ -1,12 +1,34 @@
 import React from 'react';
-import { Wrench, Palette, ShoppingCart, CheckCircle, Phone, Clock, Star, Shield } from 'lucide-react';
+import { Wrench, Palette, ShoppingCart, CheckCircle, Phone, ArrowLeft, Clock, Star, Shield } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
-import Navbar from '@/components/Navbar';
 import carDiagnosisImage from '@/assets/car-diagnosis.jpg';
 import windowTintingImage from '@/assets/window-tinting.jpg';
 import carMaintenanceImage from '@/assets/car-maintenance.jpg';
+
+const Header = () => (
+  <header className="bg-gradient-hero text-primary-foreground py-4 px-6 shadow-automotive">
+    <div className="container mx-auto flex justify-between items-center">
+      <div className="flex items-center space-x-4">
+        <Link to="/" className="flex items-center space-x-2 hover:text-accent transition-smooth">
+          <ArrowLeft className="h-5 w-5" />
+          <span>Back to Home</span>
+        </Link>
+        <div className="flex items-center space-x-2">
+          <Wrench className="h-8 w-8 text-accent" />
+          <h1 className="text-2xl font-bold">Suba Touch</h1>
+        </div>
+      </div>
+      <Button variant="accent" asChild>
+        <Link to="/contact">
+          <Phone className="w-4 h-4 mr-2" />
+          Contact Us
+        </Link>
+      </Button>
+    </div>
+  </header>
+);
 
 const Services = () => {
   const services = [
@@ -71,15 +93,15 @@ const Services = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
+      <Header />
       
       {/* Hero Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-primary/10 to-accent/10">
-        <div className="container mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+      <section className="bg-gradient-hero text-primary-foreground py-16">
+        <div className="container mx-auto px-6 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Professional Automotive Services
           </h2>
-          <p className="text-xl mb-8 text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl mb-8 opacity-90 max-w-3xl mx-auto">
             Expert technicians, modern equipment, and genuine parts ensure your vehicle receives the best care possible.
           </p>
           <div className="flex items-center justify-center space-x-8 text-sm">
@@ -100,8 +122,8 @@ const Services = () => {
       </section>
 
       {/* Main Services */}
-      <section className="py-20 px-4">
-        <div className="container mx-auto">
+      <section className="py-20">
+        <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h3 className="text-3xl font-bold mb-4">Our Core Services</h3>
             <p className="text-xl text-muted-foreground">
@@ -114,7 +136,7 @@ const Services = () => {
               <Card 
                 key={index} 
                 id={index === 0 ? 'diagnosis' : index === 1 ? 'tinting' : 'maintenance'}
-                className="group hover:shadow-lg transition-all duration-300 border-border/50 bg-card/50 backdrop-blur hover:border-accent/20 overflow-hidden scroll-mt-24"
+                className="group hover:shadow-automotive transition-all duration-300 border-2 hover:border-accent/20 overflow-hidden scroll-mt-24"
               >
                 <div className="relative h-48 overflow-hidden">
                   <img 
@@ -148,7 +170,7 @@ const Services = () => {
                       </li>
                     ))}
                   </ul>
-                  <Button className="w-full bg-accent hover:bg-accent/90" asChild>
+                  <Button className="w-full" variant="accent" asChild>
                     <Link to="/booking">Book This Service</Link>
                   </Button>
                 </CardContent>
@@ -157,7 +179,7 @@ const Services = () => {
           </div>
 
           {/* Additional Services */}
-          <div className="bg-secondary/30 rounded-lg p-8">
+          <div className="bg-muted/30 rounded-lg p-8">
             <h3 className="text-2xl font-bold mb-6 text-center">Additional Services</h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               {additionalServices.map((service, index) => (
@@ -168,7 +190,7 @@ const Services = () => {
               ))}
             </div>
             <div className="text-center mt-8">
-              <Button size="lg" className="bg-accent hover:bg-accent/90" asChild>
+              <Button variant="accent" size="lg" asChild>
                 <Link to="/contact">Get Custom Quote</Link>
               </Button>
             </div>
@@ -177,8 +199,8 @@ const Services = () => {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-20 px-4 bg-secondary/30">
-        <div className="container mx-auto">
+      <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h3 className="text-3xl font-bold mb-4">Why Choose Suba Touch?</h3>
           </div>
